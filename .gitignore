@@ -92,8 +92,3 @@ Thumbs.db
 
 # Reporting
 /mochawesome-report
-
-# Artifacts
-*.app
-*.apk
-*.ipa
