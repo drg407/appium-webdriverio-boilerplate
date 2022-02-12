@@ -1,5 +1,4 @@
-const path = require('path');
-const { config } = require('./wdio.shared.conf');
+import { config } from './wdio.shared.conf';
 
 //
 // ====================
@@ -41,9 +40,10 @@ config.capabilities = [
         "appium:automationName": 'UiAutomator2',
         "appium:platformVersion": '12',
         "appium:udid": 'emulator-5554',
-        "appium:app": path.join(process.cwd(), "./app/android/ColorNote.apk"),
+        "appium:app": "./app/ApiDemos-debug.apk",
         "appium:autoGrantPermissions": true,
     }
 ];
 
-exports.config = config;
+const _config = config;
+export { _config as config };

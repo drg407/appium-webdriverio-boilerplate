@@ -1,4 +1,4 @@
-const { config } = require('./wdio.shared.conf');
+import { config } from './wdio.shared.conf';
 
 //
 // ====================
@@ -45,4 +45,5 @@ config.capabilities = [
     }
 ];
 
-exports.config = config;
+const _config = config;
+export { _config as config };
