@@ -1,12 +1,21 @@
-import { config } from './wdio.shared.conf';
-
+import { config } from '../wdio.shared.conf';
+import 'dotenv/config';
+//
+// npx wdio config/wdio.ios.conf.js
+//
+// ====================
+// Browserstack Credentials
+// ====================
+//
+config.user = process.env.BROWSERSTACK_USER;
+config.key = process.env.BROWSERSTACK_KEY;
+//
 //
 // ====================
 // Runner Configuration
 // ====================
-// npx wdio config/wdio.ios.conf.js
 //
-config.port = 4723;
+// config.port = 4723;
 //
 // ==================
 // Specify Test Files
@@ -24,7 +33,7 @@ config.port = 4723;
 // will be called from there.
 //
 config.specs = [
-    // './test/specs/ios/**.*.js'
+    './test/specs/ios/**.*.js'
 ];
 
 // ============
@@ -41,9 +50,15 @@ config.capabilities = [
         "appium:automationName": 'XCUITest',
         "appium:platformVersion": '15.2',
         "appium:deviceName": 'iPhone 13',
-        "appium:app": "",
+        "appium:app": process.env.BROWSERSTACK_IOS_APP,
     }
 ];
+
+// Test runner services
+// Services take over a specific job you don't want to take care of. They enhance
+// your test setup with almost no effort. Unlike plugins, they don't add new
+// commands. Instead, they hook themselves up into the test process.
+config.services = ['browserstack'];
 
 const _config = config;
 export { _config as config };

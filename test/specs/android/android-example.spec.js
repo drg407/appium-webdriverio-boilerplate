@@ -1,8 +1,12 @@
 import ApiDemosScreen from '../../../test/screens/android/apiDemos.screens.js';
 
 describe('Android Spec Example', () => {
-    it('Should click elements', async () => {
+
+    before('Before Hook Example', async () => {
         await ApiDemosScreen.clickAppButton();
+    });
+
+    it('Should click elements', async () => {
         await ApiDemosScreen.clickAlertDialogsButton();
         await ApiDemosScreen.clickSelectButton();
         await ApiDemosScreen.clickCommandTwoButton();

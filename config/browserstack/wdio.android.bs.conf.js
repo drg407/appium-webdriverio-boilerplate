@@ -1,11 +1,20 @@
-import { config } from './wdio.shared.conf';
-
+import { config } from '../wdio.shared.conf';
+import 'dotenv/config';
+//
+// npx wdio config/browserstack/wdio.android.bs.conf.js
+//
+// ====================
+// Browserstack Credentials
+// ====================
+//
+config.user = process.env.BROWSERSTACK_USER;
+config.key = process.env.BROWSERSTACK_KEY;
 //
 // ====================
 // Runner Configuration
 // ====================
 //
-config.port = 4723;
+// config.port = 4723;
 //
 // ==================
 // Specify Test Files
@@ -36,14 +45,19 @@ config.specs = [
 //
 config.capabilities = [
     {
-        platformName: 'Android',
+        platformName: 'android',
         "appium:automationName": 'UiAutomator2',
-        "appium:platformVersion": '12',
-        "appium:udid": 'emulator-5554',
-        "appium:app": "./app/ApiDemos-debug.apk",
-        "appium:autoGrantPermissions": true,
+        "appium:platformVersion": '12.0',
+        "appium:deviceName": 'Google Pixel 6',
+        "appium:app": process.env.BROWSERSTACK_ANDROID_APP,
     }
 ];
+
+// Test runner services
+// Services take over a specific job you don't want to take care of. They enhance
+// your test setup with almost no effort. Unlike plugins, they don't add new
+// commands. Instead, they hook themselves up into the test process.
+config.services = ['browserstack'];
 
 const _config = config;
 export { _config as config };
