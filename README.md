@@ -60,4 +60,4 @@ TODO
 
 ## CI/CD
 
-//TODO
+[github actions](https://github.com/drg407/appium-webdriverio-boilerplate/actions) are utilized to run tests on push and pull requests as set in ci.yaml.
